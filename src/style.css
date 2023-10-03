@@ -1,0 +1,450 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff59d
+}
+
+header{
+    background-color: #1b3039;
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+a{
+    color: #eceff1;
+    text-decoration: none;
+    font-size: 25px;
+}
+.cart{
+    background-color: #1b3039;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 800px;
+    right: 30px;
+    top: 80px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cart .cerrar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 5%;
+    width: 100%;
+}
+.cart .cerrar .imagen-cerrar{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+.cart .containerItemsCart{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    height: 84%;
+    width: 100%;
+    overflow-y: scroll;
+}
+.cart .containerItemsCart .vacio{
+    color: #1b3039;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo{
+    width: 80px;
+    height: 80px;
+}
+
+.itemCart{
+    display: flex;
+    border: 1px solid #f1edf7;
+    width: 100%;
+    height: 130px;
+    align-items: center;
+    border-radius: 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.itemCart .eliminar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b3039;
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.itemCart .img{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+}
+
+.itemCart .img img{
+    transform: scale(0.7);
+    border-radius: 15px;
+}
+
+.itemCart .description-cantidad{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 33.33%;
+    height: 50%;
+    color: #eceff1;
+}
+
+.itemCart .description-cantidad .div-contador {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.itemCart .description-cantidad p {
+    height: 20%;
+    margin: 5%;
+}
+
+.itemCart .description-cantidad .contador{
+    height: 25px;
+    width: 30%;
+    border-radius: 10px;
+    background-color: #112229;
+    color: white;
+    font-size: 20px;
+}
+
+.itemCart .description-cantidad .nombre {
+    font-weight: bold;
+}
+
+.itemCart .precio{
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    height: 50%;
+    justify-content: center;
+    color: #eceff1;
+}
+
+.itemCart .precio .subtotal{
+    font-weight: bold;
+    width: 100%;
+}
+
+.containerCart{
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerCart .containerLength{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.containerCart .cantCart{
+    color: #eceff1;
+}
+
+
+.itemCart .precio .precio{
+    font-weight: bold;
+    color: #1b3039;
+    font-size: 31px;
+    width: 100%;
+}
+
+.containerCardItems{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 80px 10px;
+}
+
+.containerCardItems .containerSpinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.cardItem{
+    height: 500px;
+    width: 300px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff27d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+}
+
+.cardItem .cardImg{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cardItem .cardImg img{
+    transform: scale(0.9);
+    border-radius: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardDescription{
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+}
+
+.cardDescription .nombre{
+    font-size: 21px;
+    margin: 6px 0;
+}
+
+.cardDescription .description{
+    display: none;
+}
+
+.cardDescription .cant{
+    color: black;
+    font-size: 22px;
+    margin: 6px 0;
+
+}
+
+.cardDescription .precio{
+    color: #1b3039;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+.buttons{
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.buttons #detalles{
+    height: 55px;
+    width: 120%;
+    border-radius: 50px;
+    background-color: #1b3039;
+    color: white;
+    font-size: 20px;
+    border: none;
+}
+.buttons #detalles:hover{
+    background-color: #1b3039;
+}
+
+.buttons #addCart{
+    background-color: #1b3039;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons #addCart img{
+    transform: scale(0.7);
+}
+
+.buttons #detalleshover, .buttons #addCart:hover{
+    background-color: #1b3039;
+}
+
+.detailsItem {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.detailsItem .containerLeft {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+}
+
+.detailsItem .containerLeft .cardImg {
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
+
+.detailsItem .containerLeft Img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.detailsItem .containerRigth {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 600px;
+}
+
+.detailsItem .containerRigth .descriptionItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.detailsItem .containerRigth .cardDescription {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 450px
+}
+
+.detailsItem .containerRigth .cardDescription .nombre {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .cardDescription .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .cardDescription .description .descriptionTitle {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .cardDescription .description .parrafo {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .cardDescription .cant{
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+
+.detailsItem .containerRigth .cardDescription .precio{
+    color: #5b00fb;
+    font-weight: bold;
+    font-size: 45px;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    margin: 10px 0;
+}
+
+.detailsItem .containerRigth .buttons .addCantCart{
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #5b00fb;
+    border-radius: 50px;
+    height: 60px;
+}
+
+.detailsItem .containerRigth .buttons .addCantCart span {
+    font-weight: 20px;
+    margin: 0 10px;
+}
+
+.detailsItem .containerRigth .buttons .addCantCart div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+
+
+.detailsItem .containerRigth .buttons .addCantCart div #quitar, .detailsItem .containerRigth .buttons .addCantCart div #aumentar {
+    background-color: #5b00fb;
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.detailsItem .containerRigth .buttons #detalles{
+    width: 48%;
+    background-color: #5b00fb;
+    border-radius: 50px;
+    color: white;
+    border: none;
+    font-size: 21px;
+}
