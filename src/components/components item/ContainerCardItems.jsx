@@ -1,30 +1,45 @@
-import producto from "../../productos.json";
 import { useState, useEffect } from "react";
 import CardItem from "./CardItem";
 import { useParams } from "react-router-dom";
+import {getDocs, collection, query, where} from "firebase/firestore"
+import {db} from "../services/firebase"
 
 
 
 const ContainerCardItems = () => {
+
     const [detail, setDetail] = useState([]);
     let {categoria} = useParams()
 
 
     useEffect(() => {
-        if(categoria === undefined){
-            setDetail(producto)
-        }else{
-        setDetail([]);
-        const productosCategorizado = producto.filter(producto => producto.categoria === categoria);
-        setDetail(productosCategorizado);}
-    }, [categoria]);
+        let collectionRef = null
+        if (categoria === undefined){
+            collectionRef = collection(db, "productos")
+        } else{
+            collectionRef = query(collection(db, "productos"), where("categoria", "==", categoria))
+        }
+
+
+        getDocs(collectionRef)
+            .then(Response => {
+                const productosNuevos = Response.docs.map(doc => {
+                    const data = doc.data()
+                    return {id: doc.id, ...data}
+                })
+                setDetail(productosNuevos)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },[categoria])
 
     if (!detail) return <>Cargando...</>;
 
     return(
         <div className="containerCardItems">
             {
-                (detail.length === 0 ) ? <div className="containerSpinner">  </div>
+                (detail.length === 0 ) ? <div className="containerSpinner"> ... </div>
                 : detail.map( product => (
                     <CardItem
                         key={product.id}

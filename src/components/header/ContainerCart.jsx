@@ -1,13 +1,29 @@
 import close from "../../image/close.svg";
 import ItemCart from "./ItemCart";
-import { useContext } from "react";
+import { useContext, useState} from "react";
 import { controllerShowCart } from "./ContextCart";
 import { listCartContext } from "../components item/providerContextoListCart";
+import Button from "../components item/Button";
+import Compra from "../components item/Compra";
 
 const ContainerCart = () => {
 
     const { cartShow, setCartShow} = useContext(controllerShowCart);
-    const {listCart} = useContext(listCartContext);
+    const {listCart, clearCart} = useContext(listCartContext);
+
+    const [total, setTotal] = useState(0)
+
+
+    const actualizarTotal = (nuevoSubtotal, direccion) => {
+        setTotal((prevTotal) => {
+            if (direccion === 'sumar') {
+                return prevTotal + nuevoSubtotal;
+            } else if (direccion === 'restar') {
+                return prevTotal - nuevoSubtotal;
+            }
+            return prevTotal;
+        });
+    };
 
     const style = {
         display: cartShow
@@ -16,6 +32,18 @@ const ContainerCart = () => {
     const closeCart = () => {
         setCartShow( (cartShow === "none") ? "flex" : "none" )
     }
+
+    const handlerClick = () => {
+        clearCart()
+        setTotal(0)
+    }
+
+    const eliminarDelTotal = (id)=>{
+        const item = listCart.find(product => product.id === id)
+        const eliminar = item.precio * item.quantity
+        setTotal(total - eliminar)
+    }
+
 
     return(
 
@@ -28,21 +56,27 @@ const ContainerCart = () => {
 
                 <div className="containerItemsCart">
                     {
-                        (listCart.length === 0 ) ? <span className="vacio">Tu carrito esta vacio, ¡llenalo!</span>
+                        (listCart.length === 0 ) ? <h2 className="vacio">Tu carrito esta vacio, ¡llenalo!</h2>
                         : listCart.map(producto => (
                             <ItemCart
+                                actualizarTotal={actualizarTotal}
+                                eliminarDelTotal={eliminarDelTotal}
                                 key={producto.id}
                                 id={producto.id}
                                 nombre={producto.nombre}
-                                imagen={producto.imagen}
                                 quantity={producto.quantity}
+                                imagen={producto.imagen}
                                 precio={producto.precio}
                             />
                         ))
                     }
                 </div>
+                <h2>Total a Pagar: ${total}</h2>
+                <Compra
+                    total={total}
+                />
+                <Button className={"limpiarCarrito"} onClick={handlerClick}>Vaciar Carrito</Button>
             </div>
-
     )
 }
 

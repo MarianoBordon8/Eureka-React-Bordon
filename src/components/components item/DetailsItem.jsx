@@ -1,10 +1,11 @@
 import Image from "./Image";
 import Description from "./Description";
-import productos from "../../productos.json";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ButtonAddCart from "./ButtonAddCart";
 import cart from "../../image/cart-white.svg"
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../services/firebase";
 
 
 const DetailsItem = () => {
@@ -12,41 +13,43 @@ const DetailsItem = () => {
     const { idItem } = useParams();
 
     useEffect(() => {
-
         setDatos([])
+        const docRef = doc(db, "productos", idItem)
 
-        const idFiltrado = productos.filter(flt => flt.id === idItem);
-        setDatos(idFiltrado)
-    }, [idItem])
+        getDoc(docRef)
+            .then((response) => {
+                if(response.exists()){
+                    setDatos({id: response.id, ...response.data()})
+                }else{
+                    console.log("NO EXISTE")
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },[idItem])
 
     return(
         <div className="detailsItem">
-            {
-                (datos.length === 0) ? "NADA"
-                : datos.map( items => (
-                    <>
-                        <div className="containerLeft">
-                            <Image
-                                imagen={items.imagen}
-                            />
-                        </div>
-                        <div className="containerRigth">
-                                <Description
-                                    nombre= {items.nombre}
-                                    parrafo= {items.description}
-                                    cantidad = {items.stock}
-                                    precio={items.precio}
-                                />
-                            <div className="buttons">
-                                <ButtonAddCart
-                                id={items.id}
-                                svg={cart}
-                                />
-                            </div>
-                        </div>
-                    </>
-                ))
-            }
+            <div className="containerLeft">
+                <Image
+                    imagen={datos.imagen}
+                />
+            </div>
+            <div className="containerRigth">
+                    <Description
+                        nombre= {datos.nombre}
+                        parrafo= {datos.description}
+                        cantidad = {datos.stock}
+                        precio={datos.precio}
+                    />
+                <div className="buttons">
+                    <ButtonAddCart
+                    id={datos.id}
+                    svg={cart}
+                    />
+                </div>
+            </div>
         </div>
     )
 }
