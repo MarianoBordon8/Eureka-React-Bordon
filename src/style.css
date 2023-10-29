@@ -77,13 +77,14 @@ a{
 
 .cart{
     overflow-y: scroll;
+    width: 70%;
 }
 
 .cart .containerItemsCart{
     display: flex;
     flex-direction: column;
     margin: 10px 0;
-    height: 60%;
+    height: 65%;
     width: 100%;
     overflow-y: scroll;
 }
@@ -96,6 +97,63 @@ a{
     justify-content: center;
     align-items: center;
 }
+.cart .botonesCarrito{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cart .botonesCarrito button{
+    background-color: #0990ca;
+    width: 90%;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.cart .botonesCarrito h2{
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    color: #eceff1;
+}
+
+.cart .botonesCarrito .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+.cart .botonesCarrito .container h2{
+    margin-bottom: 3%;
+    margin-top: 3%;
+    color: #eceff1;
+}
+.cart .botonesCarrito .container .formulario{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 3%;
+}
+.cart .botonesCarrito .container .formulario input{
+    width: 90%;
+    border-radius: 5px;
+    height: 50px;
+    margin-bottom: 5px;
+    background-color: #00e5ff;
+    color: black;
+    font-size: 20px;
+}
+.cart .botonesCarrito .container .formulario input::placeholder {
+    color: black;
+    font-size: 20px;
+}
+.cart .botonesCarrito .container .formulario .enviar{
+    width: 90%;
+    border-radius: 20px;
+    height: 30px;
+}
 
 #logo{
     width: 80px;
@@ -105,7 +163,7 @@ a{
 .itemCart{
     display: flex;
     border: 1px solid #f1edf7;
-    width: 100%;
+    width: 95%;
     height: 140px;
     align-items: center;
     border-radius: 5px;
@@ -129,6 +187,7 @@ a{
     justify-content: center;
     width: 25%;
     height: 100%;
+    margin-right: 10px;
 }
 
 .itemCart .img img{
@@ -144,6 +203,7 @@ a{
     width: 33.33%;
     height: 50%;
     color: #eceff1;
+    margin-right: 10px;
 }
 
 .itemCart .description-cantidad .div-contador {
@@ -323,6 +383,7 @@ a{
     justify-content: center;
     width: 100%;
     height: calc(100vh - 60px);
+    margin-top: 80px;
 }
 
 .detailsItem .containerLeft {

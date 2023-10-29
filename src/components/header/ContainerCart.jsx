@@ -44,6 +44,10 @@ const ContainerCart = () => {
         setTotal(total - eliminar)
     }
 
+    const volverACero = () =>{
+        setTotal(0)
+    }
+
 
     return(
 
@@ -56,7 +60,7 @@ const ContainerCart = () => {
 
                 <div className="containerItemsCart">
                     {
-                        (listCart.length === 0 ) ? <h2 className="vacio">Tu carrito esta vacio, ¡llenalo!</h2>
+                        (listCart.length === 0 ) ? <h2 className="vacio">Tu carrito esta vacio</h2>
                         : listCart.map(producto => (
                             <ItemCart
                                 actualizarTotal={actualizarTotal}
@@ -67,15 +71,22 @@ const ContainerCart = () => {
                                 quantity={producto.quantity}
                                 imagen={producto.imagen}
                                 precio={producto.precio}
+                                stock={producto.stock}
                             />
                         ))
                     }
                 </div>
-                <h2>Total a Pagar: ${total}</h2>
-                <Compra
-                    total={total}
-                />
-                <Button className={"limpiarCarrito"} onClick={handlerClick}>Vaciar Carrito</Button>
+                {
+                        (listCart.length !== 0 ) ?
+                        <div className="botonesCarrito">
+                            <h2>Total a Pagar: ${total}</h2>
+                            <Compra
+                            volverACero={volverACero}
+                            total={total}
+                            />
+                            <Button className={"limpiarCarrito"} onClick={handlerClick}>Vaciar Carrito</Button></div>
+                        : null
+                    }
             </div>
     )
 }

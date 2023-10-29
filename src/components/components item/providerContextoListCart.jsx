@@ -40,7 +40,7 @@ const ProviderContextoListCart = ( {children} ) => {
 
 
     return (
-        <listCartContext.Provider value={ {removeFromCart ,listCart ,agregarProducto, clearCart} }>
+        <listCartContext.Provider value={ {removeFromCart ,listCart ,agregarProducto, clearCart, detail, setDetail} }>
             {children}
         </listCartContext.Provider>
     );

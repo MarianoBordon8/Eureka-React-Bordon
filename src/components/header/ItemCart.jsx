@@ -5,7 +5,7 @@ import Button from "../components item/Button"
 import { useState } from "react";
 
 
-const ItemCart = ( {id, nombre, quantity, imagen, precio, actualizarTotal, eliminarDelTotal} ) => {
+const ItemCart = ( {id, nombre, imagen, precio, stock, actualizarTotal, eliminarDelTotal} ) => {
 
     const { removeFromCart } = useContext(listCartContext)
     const { listCart } = useContext(listCartContext)
@@ -55,6 +55,7 @@ const ItemCart = ( {id, nombre, quantity, imagen, precio, actualizarTotal, elimi
             </div>
             <div className="description-cantidad">
                 <span className="nombre">{nombre}</span>
+                <span className="Stock">stock: {stock}</span>
                 <div className="div-contador">
                     <Button clase={"contador"} onClick={decrementar}>-</Button>
                     <p>{count}</p>
