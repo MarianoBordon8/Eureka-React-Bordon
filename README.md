@@ -1,4 +1,6 @@
-(./src/image/videoEurekaReact.gif)
+## video del funcionamiento
+Aqui se muestra un video del funcionamiento de la pagina
+[Ver el video](./src/image/videoEurekaReact.gif)
 
 # Getting Started with Create React App
 
