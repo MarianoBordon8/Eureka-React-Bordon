@@ -61,27 +61,31 @@ const ContainerCart = () => {
                 <div className="containerItemsCart">
                     {
                         (listCart.length === 0 ) ? <h2 className="vacio">Tu carrito esta vacio</h2>
-                        : listCart.map(producto => (
-                            <ItemCart
-                                actualizarTotal={actualizarTotal}
-                                eliminarDelTotal={eliminarDelTotal}
-                                key={producto.id}
-                                id={producto.id}
-                                nombre={producto.nombre}
-                                quantity={producto.quantity}
-                                imagen={producto.imagen}
-                                precio={producto.precio}
-                                stock={producto.stock}
-                            />
-                        ))
+                        :
+                        (
+                            <div>
+                                {listCart.map(producto => (
+                                    <ItemCart
+                                        actualizarTotal={actualizarTotal}
+                                        eliminarDelTotal={eliminarDelTotal}
+                                        key={producto.id}
+                                        id={producto.id}
+                                        nombre={producto.nombre}
+                                        quantity={producto.quantity}
+                                        imagen={producto.imagen}
+                                        precio={producto.precio}
+                                        stock={producto.stock}
+                                    />
+                                    ))}
+                                    <h2>Total a Pagar: ${total}</h2>
+                            </div>
+                        )
                     }
                 </div>
                 {
                         (listCart.length !== 0 ) ?
                         <div className="botonesCarrito">
-                            <h2>Total a Pagar: ${total}</h2>
                             <Compra
-                            volverACero={volverACero}
                             total={total}
                             />
                             <Button className={"limpiarCarrito"} onClick={handlerClick}>Vaciar Carrito</Button></div>

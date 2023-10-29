@@ -6,9 +6,9 @@ import Button from "./Button";
 import { useForm } from 'react-hook-form'
 
 
-const Compra = ({total, volverACero}) => {
+const Compra = ({total, }) => {
 
-    const { listCart,  clearCart} = useContext(listCartContext)
+    const { listCart} = useContext(listCartContext)
     const [ordenId, setOrderId] = useState("")
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const {register, handleSubmit} = useForm()
@@ -22,9 +22,9 @@ const Compra = ({total, volverACero}) => {
 
     const mostrarOcultarFormulario = () => {
         setMostrarFormulario(!mostrarFormulario);
-        volverACero()
         setBandera(!bandera)
     };
+
 
     const crearOrden = async ({ nombre, telefono, email }) => {
         try {
@@ -41,7 +41,6 @@ const Compra = ({total, volverACero}) => {
             const referencia = collection(db, "ordenes");
             const doc = await addDoc(referencia, orden);
             setOrderId(doc.id);
-            clearCart();
         } catch (error) {
         console.error("Error al crear la orden:", error);
         }

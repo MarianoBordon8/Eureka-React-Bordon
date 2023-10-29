@@ -78,6 +78,7 @@ a{
 .cart{
     overflow-y: scroll;
     width: 70%;
+    height: 600%;
 }
 
 .cart .containerItemsCart{
@@ -87,6 +88,7 @@ a{
     height: 65%;
     width: 100%;
     overflow-y: scroll;
+    color: #eceff1;
 }
 .cart .containerItemsCart .vacio{
     color: #eceff1;
@@ -123,6 +125,7 @@ a{
     align-items: center;
     flex-direction: column;
     margin: 0;
+    color: #eceff1;
 }
 .cart .botonesCarrito .container h2{
     margin-bottom: 3%;
