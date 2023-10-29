@@ -15,9 +15,9 @@ const Compra = ({total, volverACero}) => {
     const [bandera, setBandera] = useState(false)
     let mostrar = "Comprar"
     if(bandera){
-        mostrar = "Comprar"
-    }else{
         mostrar = "Volver"
+    }else{
+        mostrar = "Comprar"
     }
 
     const mostrarOcultarFormulario = () => {
@@ -25,7 +25,6 @@ const Compra = ({total, volverACero}) => {
         volverACero()
         setBandera(!bandera)
     };
-
 
     const crearOrden = async ({ nombre, telefono, email }) => {
         try {
@@ -39,9 +38,7 @@ const Compra = ({total, volverACero}) => {
                 total: total,
                 date: Timestamp.fromDate(new Date()),
             };
-
             const referencia = collection(db, "ordenes");
-
             const doc = await addDoc(referencia, orden);
             setOrderId(doc.id);
             clearCart();

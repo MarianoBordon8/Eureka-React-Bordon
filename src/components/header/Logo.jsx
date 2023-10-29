@@ -1,4 +1,4 @@
-import eureka from "../imagenes/eureka.png";
+import eureka from "../../image/eureka-modified.png";
 import { Link } from "react-router-dom"
 
 const Logo = () => {
