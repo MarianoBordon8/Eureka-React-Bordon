@@ -1,4 +1,4 @@
-[Ver el video](./src/image/videoEurekaReact.gif)
+(./src/image/videoEurekaReact.gif)
 
 # Getting Started with Create React App
 
