@@ -1,8 +1,7 @@
 import Logo from "../header/Logo";
 import CartWidget from "./CartWidget";
-import ContainerCart from "../header/ContainerCart";
 import ContextCart from "../header/ContextCart";
-import ItemListContainer from "../itemsListContainer/ItemsListContainer";
+import { Link } from "react-router-dom"
 
 
 const NavBar = () => {
@@ -14,17 +13,24 @@ const NavBar = () => {
                     <Logo />
                 </div>
                 <nav className="categorias">
-                    <ItemListContainer
-                        uno = "inicio"
-                        dos = "setmatero"
-                        tres = "cartuchera"
-                        cuatro = "infantil"
-                    />
+                    <ul >
+                        <li style={{ color: "white"}}>
+                            <Link to="/">inicio</Link>
+                        </li>
+                        <li>
+                            <Link to="category/setmatero">setmatero</Link>
+                        </li>
+                        <li>
+                            <Link to="category/cartuchera">cartuchera</Link>
+                        </li>
+                        <li>
+                            <Link to="category/infantil">infantil</Link>
+                        </li>
+                    </ul>
                 </nav>
                 <div className="containerCart">
-                    <CartWidget />
+                <Link to="compra"><CartWidget/></Link>
                 </div>
-                <ContainerCart />
             </header>
         </ContextCart>
     )

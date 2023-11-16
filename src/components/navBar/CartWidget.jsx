@@ -1,18 +1,12 @@
 import { useContext } from "react";
 import cart from "../../image/cart.svg"
 import { listCartContext } from "../components item/providerContextoListCart";
-import { controllerShowCart } from "../header/ContextCart";
 
 const CartWidget = () => {
-    const { setCartShow, cartShow } = useContext(controllerShowCart)
     const { listCart } = useContext(listCartContext)
 
-    const showCart = () => {
-        setCartShow( (cartShow === "none") ? "flex" : "none" )
-    }
-
     return(
-        <div className="containerLength" onClick={showCart}>
+        <div className="containerLength">
             <img src={cart} alt="cart"></img>
             <span className="cantCart">
                 {listCart.length}

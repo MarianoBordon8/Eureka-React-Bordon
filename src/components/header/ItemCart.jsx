@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react"
 import { listCartContext } from "../components item/providerContextoListCart"
 import Button from "../components item/Button"
 import { useState } from "react";
+import Counter from "../components item/counter";
 
 
 const ItemCart = ( {id, nombre, imagen, precio, stock, actualizarTotal, eliminarDelTotal} ) => {
@@ -14,6 +15,8 @@ const ItemCart = ( {id, nombre, imagen, precio, stock, actualizarTotal, eliminar
     const [count, setCount] = useState(1);
     const [total, setTotal] = useState(precio);
     const [bandera, setBandera] = useState(true);
+    const {valor , sumar, restar} = Counter(id)
+
 
     useEffect(() => {
         if (bandera) {
@@ -22,31 +25,32 @@ const ItemCart = ( {id, nombre, imagen, precio, stock, actualizarTotal, eliminar
         }
     }, [bandera]);
 
-
-    const incrementar = () => {
-        if (count < item.stock){
-        setCount(count + 1);
-        setTotal(total+item.precio)
-        const subtotal = item.precio
-        actualizarTotal(subtotal, 'sumar');
-        }
-    };
-
-    const decrementar = () => {
-        if (count > 1){
-            setCount(count - 1);
-            setTotal(total-item.precio)
-            const subtotal = item.precio
-            actualizarTotal(subtotal, 'restar');
-        }
-    };
-
-    item.quantity = count
+    item.quantity = valor
 
     const handleEliminar = () => {
         eliminarDelTotal(item.id);
-      };
+    };
 
+
+    const operacionesSumar = ()=>{
+        sumar()
+        if(valor < item.stock){
+            setCount(valor + 1);
+            setTotal(total+item.precio)
+            const subtotal = item.precio
+            actualizarTotal(subtotal, 'sumar');
+        }
+    }
+
+    const operacionesRestar = ()=>{
+        restar()
+        if(valor > 1){
+            setCount(valor - 1);
+            setTotal(total-item.precio)
+            const subtotal = item.precio
+            actualizarTotal(subtotal, 'restar')
+        }
+    }
 
     return (
         <div className="itemCart">
@@ -57,14 +61,18 @@ const ItemCart = ( {id, nombre, imagen, precio, stock, actualizarTotal, eliminar
                 <span className="nombre">{nombre}</span>
                 <span className="Stock">stock: {stock}</span>
                 <div className="div-contador">
-                    <Button clase={"contador"} onClick={decrementar}>-</Button>
-                    <p>{count}</p>
-                    <Button clase={"contador"} onClick={incrementar}>+</Button>
+                    <Button clase={"contador"} onClick={operacionesRestar}>-</Button>
+                    <p>{valor}</p>
+                    <Button clase={"contador"} onClick={operacionesSumar}>+</Button>
                 </div>
             </div>
             <div className="precio">
+                <span className="subtotal">Precio unitario</span>
+                <span className="precio">${precio}</span>
+            </div>
+            <div className="precio2">
                 <span className="subtotal">Subtotal</span>
-                <span className="precio">${precio * count}</span>
+                <span className="precio">${precio * valor}</span>
             </div>
             <button className="eliminar" onClick={ () => removeFromCart(id) }>
                 <img src={deleteWhite} onClick={handleEliminar}></img>

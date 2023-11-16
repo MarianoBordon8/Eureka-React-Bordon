@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import CardItem from "./CardItem";
+import CardItem from "../components item/CardItem";
 import { useParams } from "react-router-dom";
 import {getDocs, collection, query, where} from "firebase/firestore"
 import {db} from "../services/firebase"
 
 
 
-const ContainerCardItems = () => {
+const ItemListContainer = () => {
 
     const [detail, setDetail] = useState([]);
     let {categoria} = useParams()
@@ -55,4 +55,4 @@ const ContainerCardItems = () => {
     )
 }
 
-export default ContainerCardItems;
+export default ItemListContainer;

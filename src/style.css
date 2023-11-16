@@ -43,42 +43,14 @@ a{
     font-size: 25px;
 }
 .cart{
-    background-color: #1b3039;
+    background-color:#fff59d;
     padding: 20px;
-    border-radius: 10px;
-    position: absolute;
     z-index: 3;
     display: flex;
     flex-direction: column;
-    width: 600px;
-    height: 600px;
-    right: 30px;
-    top: 80px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.cart .cerrar{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 5%;
     width: 100%;
-}
-.cart .cerrar .imagen-cerrar{
-    height: 55px;
-    width: 55px;
-    border-radius: 50%;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: none;
-}
-
-.cart{
-    overflow-y: scroll;
-    width: 70%;
-    height: 600%;
+    height: 100%;
+    margin-top: 110px;
 }
 
 .cart .containerItemsCart{
@@ -88,10 +60,10 @@ a{
     height: 65%;
     width: 100%;
     overflow-y: scroll;
-    color: #eceff1;
+    color: black;
 }
 .cart .containerItemsCart .vacio{
-    color: #eceff1;
+    color: black;
     font-size: 25px;
     width: 100%;
     height: 100%;
@@ -106,7 +78,8 @@ a{
 }
 
 .cart .botonesCarrito button{
-    background-color: #0990ca;
+    background-color: #1b3039;
+    color: #eceff1;
     width: 90%;
     height: 30px;
     border-radius: 20px;
@@ -116,7 +89,7 @@ a{
     width: 100%;
     margin-bottom: 2%;
     margin-top: 2%;
-    color: #eceff1;
+    color: black;
 }
 
 .cart .botonesCarrito .container {
@@ -125,12 +98,12 @@ a{
     align-items: center;
     flex-direction: column;
     margin: 0;
-    color: #eceff1;
+    color: black;
 }
 .cart .botonesCarrito .container h2{
     margin-bottom: 3%;
     margin-top: 3%;
-    color: #eceff1;
+    color: black;
 }
 .cart .botonesCarrito .container .formulario{
     flex-direction: column;
@@ -144,12 +117,12 @@ a{
     border-radius: 5px;
     height: 50px;
     margin-bottom: 5px;
-    background-color: #00e5ff;
-    color: black;
+    background-color: #1b3039;
+    color: #eceff1;
     font-size: 20px;
 }
 .cart .botonesCarrito .container .formulario input::placeholder {
-    color: black;
+    color: #eceff1;
     font-size: 20px;
 }
 .cart .botonesCarrito .container .formulario .enviar{
@@ -165,20 +138,21 @@ a{
 
 .itemCart{
     display: flex;
-    border: 1px solid #f1edf7;
+    border: 1px solid #650de8;
     width: 95%;
     height: 140px;
     align-items: center;
     border-radius: 5px;
     margin: 10px 0;
     position: relative;
+    background-color: #1b3039;
 }
 
 .itemCart .eliminar{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1b3039;
+    background-color: #112229;
     border: none;
     height: 40px;
     width: 40px;
@@ -236,7 +210,16 @@ a{
 .itemCart .precio{
     display: flex;
     flex-direction: column;
-    width: 33.33%;
+    width: 15%;
+    height: 50%;
+    justify-content: center;
+    color: #eceff1;
+}
+
+.itemCart .precio2{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
     height: 50%;
     justify-content: center;
     color: #eceff1;
@@ -267,6 +250,13 @@ a{
 
 
 .itemCart .precio .precio{
+    font-weight: bold;
+    color: #eceff1;
+    font-size: 26px;
+    width: 100%;
+}
+
+.itemCart .precio2 .precio{
     font-weight: bold;
     color: #eceff1;
     font-size: 26px;

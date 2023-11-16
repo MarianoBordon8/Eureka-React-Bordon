@@ -1,14 +1,12 @@
 import close from "../../image/close.svg";
 import ItemCart from "./ItemCart";
 import { useContext, useState} from "react";
-import { controllerShowCart } from "./ContextCart";
 import { listCartContext } from "../components item/providerContextoListCart";
 import Button from "../components item/Button";
 import Compra from "../components item/Compra";
 
 const ContainerCart = () => {
 
-    const { cartShow, setCartShow} = useContext(controllerShowCart);
     const {listCart, clearCart} = useContext(listCartContext);
 
     const [total, setTotal] = useState(0)
@@ -25,14 +23,6 @@ const ContainerCart = () => {
         });
     };
 
-    const style = {
-        display: cartShow
-    }
-
-    const closeCart = () => {
-        setCartShow( (cartShow === "none") ? "flex" : "none" )
-    }
-
     const handlerClick = () => {
         clearCart()
         setTotal(0)
@@ -44,19 +34,11 @@ const ContainerCart = () => {
         setTotal(total - eliminar)
     }
 
-    const volverACero = () =>{
-        setTotal(0)
-    }
 
 
     return(
 
-            <div className="cart" style={style} >
-                <div className="cerrar">
-                    <button className="imagen-cerrar" onClick={closeCart}>
-                        <img src={close}></img>
-                    </button>
-                </div>
+            <div className="cart">
 
                 <div className="containerItemsCart">
                     {
